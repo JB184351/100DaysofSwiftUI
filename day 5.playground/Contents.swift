@@ -171,5 +171,3 @@ let theme = Theme.dark
                     /// W                         T                     F
 let background = theme == .dark ? "Black" : "White"
 print(background)
-
-
