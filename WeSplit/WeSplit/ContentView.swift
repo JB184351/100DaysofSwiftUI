@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var numberOfPeople = 0
     @State private var tipPercentage = 20
     @FocusState private var amountIsFocused: Bool
+    // Bonus challenge insert this variable into each place I"m using the currency formatter
+    @State var currencyFormatter: FloatingPointFormatStyle<Double>.Currency = .currency(code: Locale.current.currency?.identifier ?? "USD")
     
     let tipPercentages = [10, 15, 20, 25, 0]
     
@@ -39,7 +41,7 @@ struct ContentView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    TextField("Amount", value: $checkAmount, format: currencyFormatter)
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
                     
@@ -65,13 +67,13 @@ struct ContentView: View {
                 
                 // Challenge 2: Showing total check amount before the split
                 Section {
-                    Text(totalCheck, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    Text(totalCheck, format: currencyFormatter)
                 } header: {
                     Text("Total amount owed before group split")
                 }
                 
                 Section {
-                    Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    Text(totalPerPerson, format: currencyFormatter)
                 } header: {
                     // Challenge 1 for WeSplit
                     Text("Amount per person")
