@@ -27,6 +27,14 @@ struct ContentView: View {
         return amountPerPerson
     }
     
+    var totalCheck: Double {
+        let tipSelection = Double(tipPercentage)
+        let tipValue = checkAmount / 100 * tipSelection
+        let grandTotal = checkAmount + tipValue
+        
+        return grandTotal
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -48,13 +56,25 @@ struct ContentView: View {
                             Text($0, format: .percent)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    // Challenge 3 Just comment out the picker style
+                    // modification to removed the segmented option
+//                    .pickerStyle(.segmented)
                 } header: {
                     Text("How much of a tip would you like to leave?")
                 }
                 
+                // Challenge 2: Showing total check amount before the split
+                Section {
+                    Text(totalCheck, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                } header: {
+                    Text("Total amount owed before group split")
+                }
+                
                 Section {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                } header: {
+                    // Challenge 1 for WeSplit
+                    Text("Amount per person")
                 }
             }
             .navigationTitle("WeSplit")
