@@ -31,8 +31,6 @@ struct ContentView: View {
         }
     }
     
-    let temps: [Temp] = [.fahrenheit, .celsius, .kelvin]
-    
     var body: some View {
         NavigationView {
             Form {
