@@ -7,29 +7,30 @@
 
 import SwiftUI
 
-enum Temp: String, CaseIterable {
-    case fahrenheit = "Fahrenheit"
+enum Temp: String, CaseIterable, Equatable, Hashable {
     case celsius = "Celsius"
+    case fahrenheit = "Fahrenheit"
     case kelvin = "Kelvin"
-    
-    var tempatureType: String {
-        switch self {
-        case .fahrenheit:
-            return "Fahrenheit"
-        case .celsius:
-            return "Celsius"
-        case .kelvin:
-            return "Kelvin"
-        }
-    }
 }
 
 struct ContentView: View {
-    @State var currentTemp = 0.0
     @FocusState private var inputIsFocused: Bool
-    @State var convertedTempSelection: String = Temp.fahrenheit.tempatureType
+    @State private var convertedTempSelection: Temp = .celsius
+    @State private var currentTemp = 0.0
     
-    var convertedTemp = 0.0
+    private var convertedTemp: Double {
+        let inputTemp = Measurement(value: currentTemp, unit: UnitTemperature.celsius)
+        
+        switch convertedTempSelection {
+        case .celsius:
+            return inputTemp.value
+        case .fahrenheit:
+            return inputTemp.converted(to: .fahrenheit).value
+        case .kelvin:
+            return inputTemp.converted(to: .kelvin).value
+        }
+    }
+    
     let temps: [Temp] = [.fahrenheit, .celsius, .kelvin]
     
     var body: some View {
@@ -45,13 +46,31 @@ struct ContentView: View {
                 
                 Section {
                     Picker("Tempature Selection", selection: $convertedTempSelection) {
-                        ForEach(Temp.allCases, id: \.self) { tempType in
-//                            Text($0.rawValue, format: .number)
+                        ForEach(Temp.allCases, id: \.self) {
+                            Text($0.rawValue).tag($0)
                         }
                     }
+                    .pickerStyle(.segmented)
+                    
+                } header: {
+                    Text("Select tempature type to convert to")
+                }
+                
+                Section {
+                    Text("The tempature in \(convertedTempSelection.rawValue) is \(convertedTemp, specifier: "%.2f") degrees")
+                    
                 }
             }
             .navigationTitle("Temperature Converter")
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    
+                    Button("Done") {
+                        inputIsFocused = false
+                    }
+                }
+            }
         }
     }
 }
