@@ -59,6 +59,7 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
                 
+                // Challenge 1
                 Text("Score: \(currentScore)")
                     .foregroundColor(.white)
                     .font(.title.bold())
@@ -80,7 +81,8 @@ struct ContentView: View {
             scoreTitle = "Correct"
             currentScore += 1
         } else {
-            scoreTitle = "Wrong"
+            // Challenge 2
+            scoreTitle = "Wrong! That's the flag of \(countries[number])"
             currentScore -= 1
         }
         
