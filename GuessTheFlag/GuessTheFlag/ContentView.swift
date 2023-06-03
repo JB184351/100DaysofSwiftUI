@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.blue)
+    }
+}
+
 struct FlagImage: View {
     var imageName: String
     
@@ -49,7 +57,7 @@ struct ContentView: View {
                             
                                   
                         Text(countries[correctAnswer])
-                            .font(.largeTitle.weight(.semibold))
+                            .blueTitleStyle()
                     }
                     
                     
@@ -118,6 +126,12 @@ struct ContentView: View {
         currentScore = 0
         shouldStartNewGame = false
         showingScore = false
+    }
+}
+
+extension View {
+    func blueTitleStyle() -> some View {
+        modifier(Title())
     }
 }
 
