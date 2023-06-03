@@ -68,6 +68,7 @@ struct ContentView: View {
                 // Challenge 2: Showing total check amount before the split
                 Section {
                     Text(totalCheck, format: currencyFormatter)
+                        .foregroundColor(tipPercentage == 0 ? .red : .black)
                 } header: {
                     Text("Total amount owed before group split")
                 }
