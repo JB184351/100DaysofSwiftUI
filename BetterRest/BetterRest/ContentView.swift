@@ -70,7 +70,10 @@ struct ContentView: View {
                     
                 }
                 
+                // Part of challenge 3
                 Text(bedTimeMessage)
+                    .font(.largeTitle)
+                    .fontWeight(.medium)
             }
             .navigationTitle("BetterRest")
         }
