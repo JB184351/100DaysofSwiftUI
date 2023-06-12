@@ -64,6 +64,18 @@ struct ContentView: View {
             return
         }
         
+        // Challenge 1
+        guard isStartingWord(startingWord: rootWord, answer: answer) else {
+            wordError(title: "Don't use the starting word", message: "Use a word that is based off the starting word!")
+            return
+        }
+        
+        guard isShorterThanThreeLetters(word: answer) else {
+            wordError(title: "Word is shorter than 3 letters!", message: "Come up with longer words!")
+            return
+        }
+        
+        
         withAnimation {
             usedWords.insert(answer, at: 0) 
         }
@@ -107,6 +119,14 @@ struct ContentView: View {
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         
         return misspelledRange.location == NSNotFound
+    }
+    
+    func isStartingWord(startingWord: String, answer: String) -> Bool {
+        return startingWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) != answer
+    }
+    
+    func isShorterThanThreeLetters(word: String) -> Bool {
+        return word.count > 3
     }
     
     func wordError(title: String, message: String) {
