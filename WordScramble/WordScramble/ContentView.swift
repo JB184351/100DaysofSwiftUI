@@ -32,6 +32,10 @@ struct ContentView: View {
                         
                     }
                 }
+                
+                Section {
+                    Text("Score is \(score)")
+                }
             }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
@@ -44,6 +48,7 @@ struct ContentView: View {
             .toolbar {
                 Button("Start Game") {
                     startGame()
+                    score = 0
                     usedWords.removeAll()
                 }
             }
@@ -81,6 +86,7 @@ struct ContentView: View {
             return
         }
         
+        addToScore(word: answer)
         
         withAnimation {
             usedWords.insert(answer, at: 0) 
@@ -133,6 +139,24 @@ struct ContentView: View {
     
     func isShorterThanThreeLetters(word: String) -> Bool {
         return word.count > 3
+    }
+    
+    // Challenge 3
+    // Decicded to make the scoring based on how many
+    // letters you are able to use in a single word
+    func addToScore(word: String) {
+        switch word.count {
+        case 3...4:
+            score += 1
+        case 5...6:
+            score += 2
+        case 7:
+            score += 3
+        case 8:
+            score += 5
+        default:
+            score += 0
+        }
     }
     
     func wordError(title: String, message: String) {
