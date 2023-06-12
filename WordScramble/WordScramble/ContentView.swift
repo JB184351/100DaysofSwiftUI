@@ -11,10 +11,10 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
-    
     @State private var errorTitle = ""
     @State private var errorMessage = ""
     @State private var showingError = false
+    @State private var score = 0
     
     var body: some View {
         NavigationView {
@@ -40,6 +40,12 @@ struct ContentView: View {
                 Button("OK", role: .cancel) {}
             } message: {
                 Text(errorMessage)
+            } // Challenge 2: Add a toolbar that starts a new game
+            .toolbar {
+                Button("Start Game") {
+                    startGame()
+                    usedWords.removeAll()
+                }
             }
         }
     }
