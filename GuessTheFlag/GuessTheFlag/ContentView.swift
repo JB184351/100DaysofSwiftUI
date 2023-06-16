@@ -34,6 +34,7 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var currentScore = 0
     @State private var numberOfQuestionsAsked = 0
+    @State private var selectedFlag = -1
     
     var body: some View {
         ZStack {
@@ -65,7 +66,14 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
+                            // Challenge 1 & 2, this took me awhile and once I looked up Paul Hudson's version
+                            // I realized what I was doing wrong, I was doing something similar to this logic but I
+                            // wasn't reseting my condition in the askQuesiton method, I was doing it only in the
+                            // reset method which makes it obvious why I wasn't getting the solution.
                            FlagImage(imageName: countries[number])
+                                .opacity(selectedFlag == -1 || selectedFlag == number ? 1 : 0.25)
+                                .rotation3DEffect(.degrees(selectedFlag == number ? 360 : 0), axis: (0, 1, 0))
+                                .animation(.default, value: selectedFlag)
                         }
                     }
                 }
@@ -98,6 +106,8 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
+        selectedFlag = number
+        
         if number == correctAnswer {
             scoreTitle = "Correct"
             currentScore += 1
@@ -119,6 +129,7 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        selectedFlag = -1
     }
     
     func reset() {
@@ -126,6 +137,7 @@ struct ContentView: View {
         currentScore = 0
         shouldStartNewGame = false
         showingScore = false
+        selectedFlag = -1
     }
 }
 
