@@ -11,8 +11,6 @@ struct ContentView: View {
     @State private var questionDifficulty: QuestionDifficulty = .easy
     @State private var numberOfQuestions = 5
     @State private var numberOfQuestionsCorrect = 0
-    @State private var answer = ""
-    @State private var isAnswerCorrect = false
     @State private var answers: [(answer: String, isCorrect: Bool)] = Array(repeating: ("", false), count: 5)
 
     let numberOfQuestionsToAnswer = [5, 10, 20]
