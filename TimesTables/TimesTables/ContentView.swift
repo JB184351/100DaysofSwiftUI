@@ -28,6 +28,9 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+                    .onAppear() {
+                        generateQuestions(difficulty: questionDifficulty, numberOfQuestions: numberOfQuestions, multiple: timesTablesSelection)
+                    }
                     .onChange(of: timesTablesSelection) { newValue in
                         generateQuestions(difficulty: questionDifficulty, numberOfQuestions: numberOfQuestions, multiple: timesTablesSelection)
                     }
@@ -110,6 +113,8 @@ struct ContentView: View {
 
         answers = Array(repeating: ("", false), count: numberOfQuestions)
 
+        print(difficulty.rawValue)
+        
         switch difficulty {
         case .easy:
             questions = easyDifficulty
