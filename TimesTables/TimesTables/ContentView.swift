@@ -19,6 +19,9 @@ struct ContentView: View {
     @State private var numberOfQuestions = 5
     @State private var numberOfQuestionsCorrect = 0
     @State private var answer = ""
+    @State private var isAnswerCorrect = false
+    @State private var answers: [(answer: String, isCorrect: Bool)] = Array(repeating: ("", false), count: 5)
+
     
     let numberOfQuestionsToAnswer = [5, 10, 20]
     let timesTables = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -73,14 +76,23 @@ struct ContentView: View {
                 }
                 
                 List {
-                    ForEach(questions, id: \.self) {
-                        
-                        TextField("\($0[0]) x \($0[1])", text: $answer)
+                    ForEach(questions.indices, id: \.self) { index in
+                        let questionText = "\(questions[index][0]) x \(questions[index][1])"
+                        Text(questionText)
+                        TextField("", text: $answers[index])
                             .keyboardType(.numberPad)
+                            .labelsHidden()
+                            .onChange(of: answers[index]) { answer in
+                                checkAnswer(num1: questions[index][0], num2: questions[index][1], answer: answer, index: index)
+                            }
+                        Text(isAnswerCorrect ? "Correct!" : "Incorrect!")
+                            .font(.headline)
+                            .foregroundColor(isAnswerCorrect ? .green : .red)
                     }
                     .refreshable {
                         generateQuestions(difficulty: questionDifficulty, numberOfQuestions: numberOfQuestions, multiple: timesTablesSelection)
                     }
+                    
                 }
             }
             .navigationTitle("Times Tables")
@@ -102,6 +114,8 @@ struct ContentView: View {
         
         hardDifficulty = Array(easyDifficulty.prefix(numberOfQuestions))
         
+        answers = Array(repeating: ("", false), count: 5)
+        
         switch difficulty {
         case .easy:
             questions = easyDifficulty
@@ -109,6 +123,16 @@ struct ContentView: View {
             questions = mediumDifficulty
         case .hard:
             questions = hardDifficulty
+        }
+    }
+    
+    private func checkAnswer(num1: Int, num2: Int, answer: String, index: Int) {
+        let userAnswer = Int(answer) ?? 0
+        
+        if userAnswer == (num1 * num2) {
+            answers[index].isCorrect = true
+        } else {
+            answers[index].isCorrect = false
         }
     }
 }
