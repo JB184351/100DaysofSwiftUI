@@ -96,11 +96,15 @@ struct ContentView: View {
 
         easyDifficulty = Array(easyDifficulty.prefix(numberOfQuestions))
 
-        var mediumDifficulty = Array([[5, 6], [5, 7], [5, 8], [5, 9], [5, 10], [5, 11], [5, 12], [6, 6], [6, 7], [6, 8], [6, 9], [6, 10], [6, 11], [6, 12], [7, 7], [7, 8], [7, 9], [7, 10], [7, 11], [7, 12], [8, 8]].shuffled().prefix(numberOfQuestions))
+        var mediumDifficulty = Array([[5, 6], [5, 7], [5, 8], [5, 9], [5, 10], [5, 11], [5, 12], [6, 6], [6, 7], [6, 8], [6, 9], [6, 10], [6, 11], [6, 12], [7, 7], [7, 8], [7, 9], [7, 10], [7, 11], [7, 12], [8, 8]].filter { subArray in
+            subArray.contains(multiple)
+        }.shuffled())
 
         mediumDifficulty = Array(easyDifficulty.prefix(numberOfQuestions))
 
-        var hardDifficulty = Array([[12, 2], [3, 11], [12, 11], [4, 12], [12, 5], [11, 4], [9, 8], [12, 9], [9, 10], [10, 12], [11, 10]].shuffled().prefix(numberOfQuestions))
+        var hardDifficulty = Array([[12, 2], [3, 11], [12, 11], [4, 12], [12, 5], [11, 4], [9, 8], [12, 9], [9, 10], [10, 12], [11, 10]].filter { subArray in
+            subArray.contains(multiple)
+        }.shuffled())
 
         hardDifficulty = Array(easyDifficulty.prefix(numberOfQuestions))
 
