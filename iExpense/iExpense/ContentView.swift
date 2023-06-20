@@ -11,29 +11,72 @@ struct ContentView: View {
     @StateObject var expenses = Expenses()
     @State private var showingAddExpense = false
     let userRegionCode = Locale.current.currency?.identifier
+    @State private var isPersonal = false
+    
+    var personalExpenses: [ExpenseItem] {
+        expenses.items.filter { $0.type == "Personal" }
+    }
+    
+    var businessExpenses: [ExpenseItem] {
+        expenses.items.filter { $0.type == "Business" }
+    }
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items, id:\.id) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
+                Section {
+                    ForEach(personalExpenses, id:\.id) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                            }
+                            
+                            Spacer()
+                            
+                            // Challenge 1 Using different region code based on user's preference
+                            // Challenge 2 The text is edited based on the amount
+                            Text(item.amount, format: .currency(code: userRegionCode ?? "USD"))
+                                .background(item.amount < 10 ? .green : .clear)
+                                .foregroundColor(item.amount > 100 ? .red : .black)
+                                .fontWidth(item.amount < 100 ? .compressed : .none)
                         }
-                        
-                        Spacer()
-                        
-                        // Challenge 1 Using different region code based on user's preference
-                        // Challenge 2 The text is edited based on the amount
-                        Text(item.amount, format: .currency(code: userRegionCode ?? "USD"))
-                            .background(item.amount < 10 ? .green : .clear)
-                            .foregroundColor(item.amount > 100 ? .red : .black)
-                            .fontWidth(item.amount < 100 ? .compressed : .none)
                     }
+                    .onDelete { offsets in
+                        isPersonal = true
+                        removeItems(at: offsets)
+                    }
+                } header: {
+                    Text("Personal")
                 }
-                .onDelete(perform: removeItems(at:))
+                
+                Section {
+                    ForEach(businessExpenses, id:\.id) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                            }
+                            
+                            Spacer()
+                            
+                            // Challenge 1 Using different region code based on user's preference
+                            // Challenge 2 The text is edited based on the amount
+                            Text(item.amount, format: .currency(code: userRegionCode ?? "USD"))
+                                .background(item.amount < 10 ? .green : .clear)
+                                .foregroundColor(item.amount > 100 ? .red : .black)
+                                .fontWidth(item.amount < 100 ? .compressed : .none)
+                        }
+                    }
+                    .onDelete { offsets in
+                        isPersonal = false
+                        removeItems(at: offsets)
+                    }
+                } header: {
+                    Text("Buisness")
+                }
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -49,8 +92,22 @@ struct ContentView: View {
         }
     }
     
+    // Challenge 3
+    // Modified method to remove the item from the items array based on if the
+    // expense was personal or not and then comparing uuids
+    // to make sure I delete the right one out of all the items.
     func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+        for offset in offsets {
+            if isPersonal {
+                if let index = expenses.items.firstIndex(where: { $0.id == personalExpenses[offset].id } ) {
+                    expenses.items.remove(at: index)
+                }
+            } else {
+                if let index = expenses.items.firstIndex(where: { $0.id == businessExpenses[offset].id } ) {
+                    expenses.items.remove(at: index)
+                }
+            }
+        }
     }
 }
 
