@@ -27,8 +27,12 @@ struct Arc: Shape {
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
+        let rotationAjustment = Angle.degrees(90)
         
-        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+        let modifiedStartAngle = startAngle - rotationAjustment
+        let modifiedEndAngle = endAngle - rotationAjustment
+        
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStartAngle , endAngle: modifiedEndAngle, clockwise: !clockwise)
         
         return path
     }
@@ -36,7 +40,7 @@ struct Arc: Shape {
 
 struct ContentView: View {
     var body: some View {
-        Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockwise: true)
+        Arc(startAngle: .degrees(0), endAngle: .degrees(150), clockwise: false)
             .stroke(.blue, lineWidth: 100)
             .frame(width: 300, height: 300)
     }
