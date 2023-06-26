@@ -20,10 +20,24 @@ struct Triangle: Shape {
     }
 }
 
+struct Arc: Shape {
+    let startAngle: Angle
+    let endAngle: Angle
+    let clockwise: Bool
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+        
+        return path
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-       Triangle()
-            .stroke(.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+        Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockwise: true)
+            .stroke(.blue, lineWidth: 100)
             .frame(width: 300, height: 300)
     }
 }
