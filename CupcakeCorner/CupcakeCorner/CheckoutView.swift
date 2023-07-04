@@ -31,9 +31,11 @@ struct CheckoutView: View {
                 .padding()
             }
         }
-        .navigationBarTitle("Checkout")
+        .navigationBarTitle("Check out")
         .navigationBarTitleDisplayMode(.inline)
     }
+    
+    
 }
 
 struct CheckoutView_Previews: PreviewProvider {
