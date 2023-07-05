@@ -12,6 +12,7 @@ struct CheckoutView: View {
     
     @State private var confirmationMesssage = ""
     @State private var showingConfirmationMessage = false
+    @State private var showFailedAlertMessage = false
     
     var body: some View {
         ScrollView {
@@ -34,6 +35,12 @@ struct CheckoutView: View {
                     }
                 }
                 .padding()
+                // Challenge 2 Present Alert Message When Placing An Order Fails
+                .alert("Error!" ,isPresented: $showFailedAlertMessage) {
+                    Button("OK") {}
+                } message: {
+                    Text("Failed to place the order, please try again later.")
+                }
             }
         }
         .navigationBarTitle("Check out")
@@ -69,6 +76,7 @@ struct CheckoutView: View {
             
         } catch {
             print("Order failed to send")
+            showFailedAlertMessage = true
         }
     }
 }
