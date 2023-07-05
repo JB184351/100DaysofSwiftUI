@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30814D182A55F0F4009AD587 /* OrderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30814D172A55F0F4009AD587 /* OrderObject.swift */; };
 		30E8EF922A532F96002E0D9B /* CupcakeCornerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E8EF912A532F96002E0D9B /* CupcakeCornerApp.swift */; };
 		30E8EF942A532F96002E0D9B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E8EF932A532F96002E0D9B /* ContentView.swift */; };
 		30E8EF962A532F96002E0D9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30E8EF952A532F96002E0D9B /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30814D172A55F0F4009AD587 /* OrderObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderObject.swift; sourceTree = "<group>"; };
 		30E8EF8E2A532F96002E0D9B /* CupcakeCorner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CupcakeCorner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30E8EF912A532F96002E0D9B /* CupcakeCornerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupcakeCornerApp.swift; sourceTree = "<group>"; };
 		30E8EF932A532F96002E0D9B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				30E8EFA12A534DF1002E0D9B /* AddressView.swift */,
 				30E8EFA32A534F5F002E0D9B /* CheckoutView.swift */,
 				30E8EF9F2A534A0E002E0D9B /* Order.swift */,
+				30814D172A55F0F4009AD587 /* OrderObject.swift */,
 				30E8EF952A532F96002E0D9B /* Assets.xcassets */,
 				30E8EF972A532F96002E0D9B /* Preview Content */,
 			);
@@ -151,6 +154,7 @@
 				30E8EFA42A534F5F002E0D9B /* CheckoutView.swift in Sources */,
 				30E8EF942A532F96002E0D9B /* ContentView.swift in Sources */,
 				30E8EF922A532F96002E0D9B /* CupcakeCornerApp.swift in Sources */,
+				30814D182A55F0F4009AD587 /* OrderObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

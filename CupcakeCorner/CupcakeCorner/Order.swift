@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-class Order: ObservableObject, Codable {
+struct Order: Codable {
     enum CodingKeys: CodingKey {
         case type, quantity, extraFrosting, addSprinkes, name, streetAddress, city, zip
     }
     
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     
-    @Published var type = 0
-    @Published var quantity = 3
+    var type = 0
+    var quantity = 3
     
-    @Published var specialRequestEnabled = false {
+    var specialRequestEnabled = false {
         didSet {
             if specialRequestEnabled == false {
                 extraFrosting = false
@@ -26,13 +26,13 @@ class Order: ObservableObject, Codable {
         }
     }
     
-    @Published var extraFrosting = false
-    @Published var addSprinkles = false
+    var extraFrosting = false
+    var addSprinkles = false
     
-    @Published var name = ""
-    @Published var streetAddress = ""
-    @Published var city = ""
-    @Published var zip = ""
+    var name = ""
+    var streetAddress = ""
+    var city = ""
+    var zip = ""
     
     // Challenge 1: Don't let the user be able to input only whitespaces
     // when entering address information
@@ -75,7 +75,7 @@ class Order: ObservableObject, Codable {
         try container.encode(zip, forKey: .zip)
     }
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         type = try container.decode(Int.self, forKey: .type)
