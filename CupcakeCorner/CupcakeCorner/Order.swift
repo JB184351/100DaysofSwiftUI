@@ -34,8 +34,12 @@ class Order: ObservableObject, Codable {
     @Published var city = ""
     @Published var zip = ""
     
+    // Challenge 1: Don't let the user be able to input only whitespaces
+    // when entering address information
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        if name.trimmingCharacters(in: .whitespaces).isEmpty || streetAddress.trimmingCharacters(in: .whitespaces).isEmpty  ||
+            city.trimmingCharacters(in: .whitespaces).isEmpty
+            || zip.trimmingCharacters(in: .whitespaces).isEmpty  {
             return false
         }
         
