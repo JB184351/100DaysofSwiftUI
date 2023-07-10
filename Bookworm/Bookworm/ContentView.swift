@@ -30,6 +30,9 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(book.title ?? "Unknown Title")
                                     .font(.headline)
+                                    // Challenge 2, make Book Title Red When the Rating
+                                    // of the book is 1 star
+                                    .foregroundStyle(book.rating == 1 ? .red : .primary)
                                 
                                 Text(book.author ?? "Unknown Author")
                             }
