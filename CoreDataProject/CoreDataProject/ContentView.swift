@@ -11,11 +11,10 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @State private var lastNameFilter = "A"
-    @State private var predicateString = "lastName BEGINSWITH %@"
     
     var body: some View {
         VStack {
-            FilteredList(filter: lastNameFilter, predicate: predicateString)
+            FilteredList(filter: lastNameFilter, predicate: .beginsWith)
             
             Button("Add Examples") {
                 let taylor = Singer(context: moc)
