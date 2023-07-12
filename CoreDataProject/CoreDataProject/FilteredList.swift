@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Challenge 2: Modify String Parameter to use
+// an ENUM
 enum PredicateParameter: String {
     case beginsWith = "lastName BEGINSWITH %@"
     case endsWith = "ENDSWITH"
