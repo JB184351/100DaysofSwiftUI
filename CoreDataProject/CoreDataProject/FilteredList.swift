@@ -26,8 +26,11 @@ struct FilteredList: View {
     
     // Challenge 1: Change initializer to accept a string parameter
     // that allows a change of the predicate string
-    init(filter: String, predicate: PredicateParameter) {
-        _fetchRequest = FetchRequest<Singer>(sortDescriptors: [], predicate: NSPredicate(format: "\(predicate.rawValue)", filter))
+    
+    // Challenge 3: Modify Parameter to accept an array of
+    // sort descriptor type
+    init(filter: String, predicate: PredicateParameter, sortDescriptors: [SortDescriptor<Singer>]) {
+        _fetchRequest = FetchRequest<Singer>(sortDescriptors: sortDescriptors, predicate: NSPredicate(format: "\(predicate.rawValue)", filter))
     }
 }
 

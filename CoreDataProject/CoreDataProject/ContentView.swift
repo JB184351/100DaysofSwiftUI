@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            FilteredList(filter: lastNameFilter, predicate: .beginsWith)
+            FilteredList(filter: lastNameFilter, predicate: .beginsWith, sortDescriptors: [])
             
             Button("Add Examples") {
                 let taylor = Singer(context: moc)
