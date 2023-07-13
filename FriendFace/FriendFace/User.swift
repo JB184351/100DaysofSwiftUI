@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct User {
+struct User: Codable, Hashable {
     let id: String
-    let isActive: Bool = false
+    let isActive: Bool
     let name: String
     let age: Int
     let company: String

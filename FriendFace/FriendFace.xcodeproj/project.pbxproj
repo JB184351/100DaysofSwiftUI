@@ -13,6 +13,7 @@
 		308733A62A605A7400C2936A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 308733A52A605A7400C2936A /* Preview Assets.xcassets */; };
 		308733AD2A605AE800C2936A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308733AC2A605AE800C2936A /* User.swift */; };
 		308733AF2A605B4200C2936A /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308733AE2A605B4200C2936A /* Friend.swift */; };
+		308733B12A6062F600C2936A /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308733B02A6062F600C2936A /* UserDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		308733A52A605A7400C2936A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		308733AC2A605AE800C2936A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		308733AE2A605B4200C2936A /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		308733B02A6062F600C2936A /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				3087339E2A605A7300C2936A /* FriendFaceApp.swift */,
 				308733A02A605A7300C2936A /* ContentView.swift */,
+				308733B02A6062F600C2936A /* UserDetailView.swift */,
 				308733AC2A605AE800C2936A /* User.swift */,
 				308733AE2A605B4200C2936A /* Friend.swift */,
 				308733A22A605A7400C2936A /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 				308733A12A605A7300C2936A /* ContentView.swift in Sources */,
 				3087339F2A605A7300C2936A /* FriendFaceApp.swift in Sources */,
 				308733AD2A605AE800C2936A /* User.swift in Sources */,
+				308733B12A6062F600C2936A /* UserDetailView.swift in Sources */,
 				308733AF2A605B4200C2936A /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
