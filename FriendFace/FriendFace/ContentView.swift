@@ -13,21 +13,21 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(users, id: \.self) { user in
-                        Section {
-                            NavigationLink {
-                                UserDetailView(user: user)
-                            } label: {
-                                Text(user.name)
-                            }
-                        }
+                Section {
+                    NavigationLink {
+                        UserDetailView(user: user)
+                    } label: {
+                        Text(user.name)
+                    }
                 }
+            }
             .onAppear {
                 Task {
                     if users.isEmpty {
                         await fetchUsers()
                     }
                 }
-        }
+            }
         }
     }
     
