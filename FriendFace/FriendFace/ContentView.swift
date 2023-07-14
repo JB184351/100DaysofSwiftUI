@@ -6,25 +6,48 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
+    
     @State private var users = [User]()
     
     var body: some View {
         NavigationView {
-            List(users, id: \.self) { user in
+            List(cachedUsers, id: \.self) { user in
                 Section {
                     NavigationLink {
                         UserDetailView(user: user)
                     } label: {
-                        Text(user.name)
+                        Text(user.wrappedName)
                     }
                 }
             }
             .onAppear {
                 Task {
-                    if users.isEmpty {
-                        await fetchUsers()
+                    await fetchUsers()
+                    
+                    for user in users {
+                        let newUser = CachedUser(context: moc)
+                        newUser.name = user.name
+                        newUser.id = user.id
+                        newUser.isActive = user.isActive
+                        newUser.age = Int16(user.age)
+                        newUser.about = user.about
+                        newUser.email = user.email
+                        newUser.address = user.address
+                        newUser.company = user.company
+                        
+                        for friend in user.friends {
+                            let newFriend = CachedFriend(context: moc)
+                            newFriend.id = friend.id
+                            newFriend.name = friend.name
+                            newFriend.user = newUser
+                        }
+                        
+                        try? moc.save()
                     }
                 }
             }
@@ -50,8 +73,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

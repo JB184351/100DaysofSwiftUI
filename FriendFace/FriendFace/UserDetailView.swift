@@ -6,20 +6,21 @@
 //
 
 import SwiftUI
+import Combine
 
 struct UserDetailView: View {
-    let user: User
+    let user: CachedUser
     
     var body: some View {
         VStack {
             Section {
-                Text("I'm \(user.name)")
+                Text("I'm \(user.wrappedName)")
                 Text("I'm \(user.age) years old")
-                Text("Here's my \(user.address)")
+                Text("Here's my \(user.wrappedAddress)")
                 Text("Here's a list of my friends by name")
                 
-                ForEach(user.friends, id: \.self) { friend in
-                    Text(friend.name)
+                ForEach(user.friendsArray, id: \.self) { friend in
+                    Text(friend.wrappedName)
                 }
             }
         }
