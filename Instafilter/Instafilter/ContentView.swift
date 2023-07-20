@@ -18,6 +18,9 @@ struct ContentView: View {
     @State private var processedImage: UIImage?
     
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
+    
+    @State private var sliderText = "Intensity"
+    
     let context = CIContext()
     
     @State private var showingFilterSheet = false
@@ -41,8 +44,28 @@ struct ContentView: View {
                     showingImagePicker = true
                 }
                 
+                // Challenge 2, I played with seveal ideas on how to do this
+                // I tried using an enum with the types to change the slider
+                // text and separate properties instead of doing filterIntesnity * 200
+                // or whatever, but found this wasn't feasbile so I settled with this for
+                // now, might look up other solutions on how this could be better.
                 HStack {
-                    Text("Intesnity")
+                    Text(sliderText)
+                        .onChange(of: currentFilter.inputKeys) { newValue in
+                            if newValue.contains(kCIInputIntensityKey) {
+                                currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
+                                sliderText = "Intensity"
+                            }
+                            if newValue.contains(kCIInputRadiusKey) {
+                                currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+                                sliderText = "Radius"
+                            }
+                            if newValue.contains(kCIInputScaleKey) {
+                                currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+                                sliderText = "Scale"
+                            }
+                        }
+                    
                     Slider(value: $filterIntensity)
                         .onChange(of: filterIntensity) { _ in applyProcessing() }
                 }
@@ -68,6 +91,7 @@ struct ContentView: View {
             .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(image: $inputImage)
             }
+            // Technically the ones I added don't work for Challenge 3, I tried changing the keys appropriately but that seemed to cause a crash, but I know where to do it if I were to come back to this.
             .confirmationDialog("Select a filter", isPresented: $showingFilterSheet) {
                 Button("Crystallize") { setFilter(CIFilter.crystallize())}
                 Button("Edges") { setFilter(CIFilter.edges())}
@@ -76,6 +100,8 @@ struct ContentView: View {
                 Button("Sepia Tone") { setFilter(CIFilter.sepiaTone())}
                 Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask())}
                 Button("Vignette") { setFilter(CIFilter.vignette())}
+//                Button("Accordion") { setFilter(CIFilter.accordionFoldTransition()) }
+//                Button("Blend With Red Mask") { setFilter(CIFilter.blendWithRedMask()) }
                 Button("Cancel", role: .cancel) {}
             }
         }
