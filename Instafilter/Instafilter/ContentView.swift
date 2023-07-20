@@ -55,7 +55,11 @@ struct ContentView: View {
                     
                     Spacer()
                     
+                    // Challenge 1 disable the
+                    // save button if there is
+                    // no image
                     Button("Save", action: save)
+                        .disabled(image == nil)
                 }
             }
             .padding([.horizontal, .bottom])
