@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3040CD8A2A6EE62600720232 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3040CD892A6EE62600720232 /* Location.swift */; };
 		3046AA502A6AE39500D7F121 /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3046AA4F2A6AE39500D7F121 /* BucketListApp.swift */; };
 		3046AA522A6AE39500D7F121 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3046AA512A6AE39500D7F121 /* ContentView.swift */; };
 		3046AA542A6AE39500D7F121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3046AA532A6AE39500D7F121 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3040CD892A6EE62600720232 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3046AA4C2A6AE39500D7F121 /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3046AA4F2A6AE39500D7F121 /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		3046AA512A6AE39500D7F121 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				3046AA4F2A6AE39500D7F121 /* BucketListApp.swift */,
 				3046AA512A6AE39500D7F121 /* ContentView.swift */,
+				3040CD892A6EE62600720232 /* Location.swift */,
 				3046AA532A6AE39500D7F121 /* Assets.xcassets */,
 				3046AA552A6AE39500D7F121 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3046AA522A6AE39500D7F121 /* ContentView.swift in Sources */,
+				3040CD8A2A6EE62600720232 /* Location.swift in Sources */,
 				3046AA502A6AE39500D7F121 /* BucketListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +274,7 @@
 				DEVELOPMENT_TEAM = H9AZCNDQS4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +304,7 @@
 				DEVELOPMENT_TEAM = H9AZCNDQS4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
