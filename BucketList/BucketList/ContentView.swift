@@ -75,6 +75,9 @@ struct ContentView: View {
             .background(.blue)
             .foregroundColor(.white)
             .clipShape(Capsule())
+            .alert("Could not authenticate biometrics", isPresented: $viewModel.isShowingAlert) {
+                Button("OK", role: .cancel) {}
+            }
         }
     }
 }
