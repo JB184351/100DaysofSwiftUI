@@ -48,14 +48,17 @@ struct ContentView: View {
                         Button {
                             viewModel.addLocation()
                         } label: {
+                            // Challenge 1
+                            // I moved the code to inside the image for challenge 1 but don't
+                            // see a difference between the two, not sure what I should be seeing.
                             Image(systemName: "plus")
+                                .padding()
+                                .background(.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.trailing)
                         }
-                        .padding()
-                        .background(.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
                     }
                 }
             }
