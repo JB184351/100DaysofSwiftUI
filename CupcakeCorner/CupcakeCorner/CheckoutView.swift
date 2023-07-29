@@ -17,10 +17,14 @@ struct CheckoutView: View {
     var body: some View {
         ScrollView {
             VStack {
+                // Challenge 1
+                // I was going to had accessibility hidden for this image but when testing this image is ignored
+                // by default but wanted to see how I would do it anyway so I left a commented modifier here
                 AsyncImage(url: URL(string: "https://hws.dev/img/cupcakes@3x.jpg"), scale: 3) { image in
                     image
                         .resizable()
                         .scaledToFit()
+//                        .accessibilityHidden(true)
                 } placeholder: {
                     ProgressView()
                 }
