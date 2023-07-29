@@ -36,9 +36,12 @@ struct MoonShotGridView: View {
                                     
                                     Spacer()
                                     
+                                    // Challenge 3 Day 76, Make Any Labels that say N/A say "Date Not Available"
+                                    // because VoiceOver reads it as "N Slash A" by default
                                     Text(mission.formattedLaunchDate)
                                         .font(.caption)
                                         .foregroundColor(.white.opacity(0.5))
+                                        .accessibilityLabel(mission.formattedLaunchDate == "N/A" ? "Mission Date Not Available" : mission.formattedLaunchDate)
                                 }
                                 .padding(.vertical)
                                 .frame(maxWidth: .infinity)

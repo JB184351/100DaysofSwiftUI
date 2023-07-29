@@ -26,10 +26,11 @@ struct ContentView: View {
                 } label: {
                     if isGrid {
                         Image(systemName: "list.bullet")
+                            .accessibilityLabel("Change to List View")
                     } else {
                         Image(systemName: "circle.grid.2x2")
+                            .accessibilityLabel("Change to Grid View")
                     }
-                    
                 }
             }
             .navigationTitle("Moonshot")

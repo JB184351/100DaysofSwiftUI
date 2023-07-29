@@ -30,6 +30,7 @@ struct MissionView: View {
                     Text(mission.formattedLaunchDate)
                         .font(.title3.bold())
                         .frame(alignment: .center)
+                        .accessibilityLabel(mission.formattedLaunchDate == "N/A" ? "Mission Date Not Available" : mission.formattedLaunchDate)
                     
                     
                     VStack(alignment: .leading) {
