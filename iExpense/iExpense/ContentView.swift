@@ -41,8 +41,11 @@ struct ContentView: View {
                                 .background(item.amount < 10 ? .green : .clear)
                                 .foregroundColor(item.amount > 100 ? .red : .black)
                                 .fontWidth(item.amount < 100 ? .compressed : .none)
+                                .accessibilityLabel("Name of expense is \(item.name) and the amount is \(item.amount)")
+                                .accessibilityHint("Personal")
                         }
                     }
+                  
                     .onDelete { offsets in
                         isPersonal = true
                         removeItems(at: offsets)
@@ -68,6 +71,8 @@ struct ContentView: View {
                                 .background(item.amount < 10 ? .green : .clear)
                                 .foregroundColor(item.amount > 100 ? .red : .black)
                                 .fontWidth(item.amount < 100 ? .compressed : .none)
+                                .accessibilityLabel("Name of expense is \(item.name) and the amount is \(item.amount)")
+                                .accessibility(hint: "Business")
                         }
                     }
                     .onDelete { offsets in
