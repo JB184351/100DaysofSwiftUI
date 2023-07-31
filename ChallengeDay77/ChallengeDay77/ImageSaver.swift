@@ -11,8 +11,12 @@ class ImageSaver: NSObject {
     var successHandler: (() -> Void)?
     var errorHandler: ((Error) -> Void)?
     
-    func writeToPhotoAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
+    func writeToDisk(image: UIImage) {
+        if let jpegData = image.jpegData(compressionQuality: 0.8) {
+            try? jpegData.write(to: FileManager.documentsDirectory, options: [.atomic, .completeFileProtection])
+        } else {
+            print("Couldn't Save Image to Disk")
+        }
     }
     
     @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {

@@ -13,6 +13,10 @@
 		305207CE2A781E2600E2BA3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305207CD2A781E2600E2BA3D /* Preview Assets.xcassets */; };
 		305207D52A78204700E2BA3D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305207D42A78204700E2BA3D /* ImagePicker.swift */; };
 		305207D72A78207900E2BA3D /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305207D62A78207900E2BA3D /* ImageSaver.swift */; };
+		305207DB2A78253800E2BA3D /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305207DA2A78253800E2BA3D /* Person.swift */; };
+		305207E12A782CBA00E2BA3D /* AddPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305207E02A782CBA00E2BA3D /* AddPersonView.swift */; };
+		305207E32A7834A300E2BA3D /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305207E22A7834A300E2BA3D /* FileManagerExtension.swift */; };
+		305207E52A783C4100E2BA3D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305207E42A783C4100E2BA3D /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,10 @@
 		305207CD2A781E2600E2BA3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		305207D42A78204700E2BA3D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		305207D62A78207900E2BA3D /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		305207DA2A78253800E2BA3D /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		305207E02A782CBA00E2BA3D /* AddPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPersonView.swift; sourceTree = "<group>"; };
+		305207E22A7834A300E2BA3D /* FileManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
+		305207E42A783C4100E2BA3D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +66,11 @@
 				305207C62A781E2500E2BA3D /* ChallengeDay77App.swift */,
 				305207C82A781E2500E2BA3D /* ContentView.swift */,
 				305207D42A78204700E2BA3D /* ImagePicker.swift */,
+				305207E02A782CBA00E2BA3D /* AddPersonView.swift */,
+				305207E42A783C4100E2BA3D /* ViewModel.swift */,
+				305207DA2A78253800E2BA3D /* Person.swift */,
 				305207D62A78207900E2BA3D /* ImageSaver.swift */,
+				305207E22A7834A300E2BA3D /* FileManagerExtension.swift */,
 				305207CA2A781E2600E2BA3D /* Assets.xcassets */,
 				305207CC2A781E2600E2BA3D /* Preview Content */,
 			);
@@ -143,10 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				305207DB2A78253800E2BA3D /* Person.swift in Sources */,
 				305207D52A78204700E2BA3D /* ImagePicker.swift in Sources */,
+				305207E32A7834A300E2BA3D /* FileManagerExtension.swift in Sources */,
 				305207C92A781E2500E2BA3D /* ContentView.swift in Sources */,
+				305207E52A783C4100E2BA3D /* ViewModel.swift in Sources */,
 				305207C72A781E2500E2BA3D /* ChallengeDay77App.swift in Sources */,
 				305207D72A78207900E2BA3D /* ImageSaver.swift in Sources */,
+				305207E12A782CBA00E2BA3D /* AddPersonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +294,7 @@
 				DEVELOPMENT_TEAM = H9AZCNDQS4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need To add an image for the meetup!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -307,6 +324,7 @@
 				DEVELOPMENT_TEAM = H9AZCNDQS4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need To add an image for the meetup!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
