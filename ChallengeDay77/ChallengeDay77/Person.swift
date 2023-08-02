@@ -8,11 +8,18 @@
 import Foundation
 import UIKit
 import SwiftUI
+import MapKit
 
 struct Person: Codable, Identifiable, Equatable {
     var id: UUID
     let name: String
     let image: Data
+    var latitude: Double
+    var longitude: Double
+    
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
     
     func getImage(from data: Data) -> Image {
         if let image = UIImage(data: data) {

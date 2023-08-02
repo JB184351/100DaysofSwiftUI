@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		303023052A79A4A00084D17D /* LocationFectcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303023042A79A4A00084D17D /* LocationFectcher.swift */; };
+		303023072A79A9570084D17D /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303023062A79A9570084D17D /* PersonDetailView.swift */; };
 		305207C72A781E2500E2BA3D /* ChallengeDay77App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305207C62A781E2500E2BA3D /* ChallengeDay77App.swift */; };
 		305207C92A781E2500E2BA3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305207C82A781E2500E2BA3D /* ContentView.swift */; };
 		305207CB2A781E2600E2BA3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305207CA2A781E2600E2BA3D /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		303023042A79A4A00084D17D /* LocationFectcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFectcher.swift; sourceTree = "<group>"; };
+		303023062A79A9570084D17D /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 		305207C32A781E2500E2BA3D /* ChallengeDay77.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChallengeDay77.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		305207C62A781E2500E2BA3D /* ChallengeDay77App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDay77App.swift; sourceTree = "<group>"; };
 		305207C82A781E2500E2BA3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,8 +69,10 @@
 			children = (
 				305207C62A781E2500E2BA3D /* ChallengeDay77App.swift */,
 				305207C82A781E2500E2BA3D /* ContentView.swift */,
+				303023042A79A4A00084D17D /* LocationFectcher.swift */,
 				305207D42A78204700E2BA3D /* ImagePicker.swift */,
 				305207E02A782CBA00E2BA3D /* AddPersonView.swift */,
+				303023062A79A9570084D17D /* PersonDetailView.swift */,
 				305207E42A783C4100E2BA3D /* ViewModel.swift */,
 				305207DA2A78253800E2BA3D /* Person.swift */,
 				305207D62A78207900E2BA3D /* ImageSaver.swift */,
@@ -155,9 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303023052A79A4A00084D17D /* LocationFectcher.swift in Sources */,
 				305207DB2A78253800E2BA3D /* Person.swift in Sources */,
 				305207D52A78204700E2BA3D /* ImagePicker.swift in Sources */,
 				305207E32A7834A300E2BA3D /* FileManagerExtension.swift in Sources */,
+				303023072A79A9570084D17D /* PersonDetailView.swift in Sources */,
 				305207C92A781E2500E2BA3D /* ContentView.swift in Sources */,
 				305207E52A783C4100E2BA3D /* ViewModel.swift in Sources */,
 				305207C72A781E2500E2BA3D /* ChallengeDay77App.swift in Sources */,
@@ -294,6 +302,8 @@
 				DEVELOPMENT_TEAM = H9AZCNDQS4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to know where you met this person!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to know where I met this person!";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need To add an image for the meetup!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -324,6 +334,8 @@
 				DEVELOPMENT_TEAM = H9AZCNDQS4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need to know where you met this person!";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need to know where I met this person!";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need To add an image for the meetup!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

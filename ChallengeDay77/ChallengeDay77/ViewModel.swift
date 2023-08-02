@@ -21,9 +21,9 @@ import SwiftUI
         }
     }
     
-    func addPerson(name: String, image: UIImage?) {
+    func addPerson(name: String, image: UIImage?, latitude: Double, longitude: Double) {
         guard let imageData = image?.jpegData(compressionQuality: 0.8) else { return }
-        let newPerson = Person(id: UUID(), name: name, image: imageData)
+        let newPerson = Person(id: UUID(), name: name, image: imageData, latitude: latitude, longitude: longitude)
         people.append(newPerson)
         save()
     }

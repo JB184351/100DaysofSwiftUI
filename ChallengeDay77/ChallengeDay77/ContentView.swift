@@ -26,6 +26,8 @@ struct ContentView: View {
                                     .frame(width: 100, height: 100)
                                 
                                 Text(person.name)
+                                
+                                NavigationLink("", destination: PersonDetailView(person: person))
                             }
                             .onAppear {
                                 loadImage(person: person)
