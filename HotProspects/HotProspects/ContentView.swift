@@ -8,31 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var output = ""
+    @StateObject var prospects = Prospects()
     
     var body: some View {
-        Text(output)
-            .task {
-                await fetchReadings()
-            }
-    }
-    
-    func fetchReadings() async {
-        let fetchTask = Task { () -> String in
-            let url = URL(string: "https://hws.dev/readings.json")!
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let readings = try JSONDecoder().decode([Double].self, from: data)
-            return "Found \(readings.count) readings"
+        TabView {
+            ProspectsView(filter: .none)
+                .tabItem {
+                    Label("Everyone", systemImage: "person.3")
+                }
+            
+            ProspectsView(filter: .contacted)
+                .tabItem {
+                    Label("Everyone", systemImage: "checkmark.circle")
+                }
+            
+            
+            ProspectsView(filter: .uncontacted)
+                .tabItem {
+                    Label("Everyone", systemImage: "questionmark.diamond")
+                }
+            
+            MeView()
+                .tabItem {
+                    Label("Me", systemImage: "person.crop.square")
+                }
         }
-        
-        let result = await fetchTask.result
-        
-        switch result {
-        case .success(let str):
-            output = str
-        case .failure(let error):
-            output = "Download error: \(error.localizedDescription)"
-        }
+        .environmentObject(prospects)
     }
 }
 
