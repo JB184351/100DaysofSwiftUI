@@ -10,8 +10,9 @@ import CoreImage.CIFilterBuiltins
 import SwiftUI
 
 struct MeView: View {
-    @State private var name = "Justin"
-    @State private var email = "justinbengtson@icloud.com"
+    @State private var name = "Anonymous"
+    @State private var email = "you@yourmail.com"
+    @State private var qrCode = UIImage()
     
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
@@ -27,13 +28,24 @@ struct MeView: View {
                     .textContentType(.emailAddress)
                     .font(.title)
                 
-                Image(uiImage: genereateQRCode(from: "\(name)/n\(email)"))
+                Image(uiImage: qrCode)
                     .resizable()
                     .interpolation(.none)
                     .scaledToFit()
                     .frame(width: 200, height: 200)
+                    .contextMenu {
+                        Button {
+                            let imageSaver = ImageSaver()
+                            imageSaver.writeToPhotoAlbum(image: qrCode)
+                        } label: {
+                            Label("Save to Photos", systemImage: "square.and.arrow.down")
+                        }
+                    }
             }
             .navigationTitle("Your Code")
+            .onAppear(perform: updateCode)
+            .onChange(of: name) { _ in updateCode() }
+            .onChange(of: email) { _ in updateCode() }
         }
     }
     
@@ -42,11 +54,16 @@ struct MeView: View {
         
         if let outputImage = filter.outputImage {
             if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                return UIImage(cgImage: cgimg)
+                qrCode = UIImage(cgImage: cgimg)
+                return qrCode
             }
         }
         
         return UIImage(systemName: "xmark.circle") ?? UIImage()
+    }
+    
+    func updateCode() {
+        qrCode = genereateQRCode(from: "\(name)/n\(email)")
     }
 }
 
