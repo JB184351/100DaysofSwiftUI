@@ -22,12 +22,20 @@ struct ProspectsView: View {
     var body: some View {
         NavigationView {
             List {
+                // Not sure how to make this look good but
+                // Challenge 1: Use an icon to show who's
+                // been contacted.
                 ForEach(filteredProspects) { prospect in
                     VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.emailAddress)
-                            .foregroundStyle(.secondary)
+                        HStack {
+                            Image(systemName: prospect.isContacted ? "checkmark.message.fill" : "")
+                        }
+                        VStack {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                     .swipeActions {
                         if prospect.isContacted {
