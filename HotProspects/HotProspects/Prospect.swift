@@ -22,6 +22,7 @@ class Prospect: Identifiable, Codable {
         if let data = UserDefaults.standard.data(forKey: saveKey) {
             if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
                 people = decoded
+                return
             }
         }
         
