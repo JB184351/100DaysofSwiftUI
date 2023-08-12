@@ -14,10 +14,20 @@ struct ProspectsView: View {
         case none, contacted, uncontacted
     }
     
+    // Challenge 3
+    // Add another Enum to make it possible to sort
+    // by name and most recent easier.
+    enum SortType {
+        case name, mostRecent, none
+    }
+    
     @EnvironmentObject var prospects: Prospects
     @State private var isShowingScanner = false
+    @State private var isShowingSortDialog = false
+    @State private var prospecs = [Prospect]()
     
     let filter: FilterType
+    @State private var sortType: SortType = .none
     
     var body: some View {
         NavigationView {
@@ -25,7 +35,7 @@ struct ProspectsView: View {
                 // Not sure how to make this look good but
                 // Challenge 1: Use an icon to show who's
                 // been contacted.
-                ForEach(filteredProspects) { prospect in
+                ForEach(sortedProspects) { prospect in
                     VStack(alignment: .leading) {
                         HStack {
                             Image(systemName: prospect.isContacted ? "checkmark.message.fill" : "")
@@ -70,9 +80,20 @@ struct ProspectsView: View {
                 } label: {
                     Label("Scan", systemImage: "qrcode.viewfinder")
                 }
+                
+                Button {
+                    isShowingSortDialog = true
+                } label: {
+                    Label("Sort", systemImage: "folder")
+                }
             }
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
+            }
+            .confirmationDialog("How do you want to sort?", isPresented: $isShowingSortDialog) {
+                Button("By Name") { sortType = .name }
+                Button("Most Recent") { sortType = .mostRecent }
+                Button("Cancel", role: .cancel) { sortType = .none }
             }
         }
     }
@@ -96,6 +117,17 @@ struct ProspectsView: View {
             return prospects.people.filter { $0.isContacted }
         case .uncontacted:
             return prospects.people.filter { !$0.isContacted }
+        }
+    }
+    
+    var sortedProspects: [Prospect] {
+        switch sortType {
+        case .name:
+            return filteredProspects.sorted { $0.name < $1.name }
+        case .mostRecent:
+            return filteredProspects.sorted { $0.dateCreated > $1.dateCreated }
+        case .none:
+            return filteredProspects
         }
     }
     
@@ -128,9 +160,7 @@ struct ProspectsView: View {
             var dateComponents = DateComponents()
             dateComponents.hour = 9
             
-//            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
             
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             
