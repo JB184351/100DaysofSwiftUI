@@ -39,7 +39,6 @@
 		301F16962A8A9BEC00054A50 = {
 			isa = PBXGroup;
 			children = (
-				30C491DC2A8BD87C007EE4B2 /* CardView.swift */,
 				301F16A12A8A9BEC00054A50 /* Flashzilla */,
 				301F16A02A8A9BEC00054A50 /* Products */,
 			);
@@ -58,6 +57,7 @@
 			children = (
 				301F16A22A8A9BEC00054A50 /* FlashzillaApp.swift */,
 				301F16A42A8A9BEC00054A50 /* ContentView.swift */,
+				30C491DC2A8BD87C007EE4B2 /* CardView.swift */,
 				30C491DA2A8BD7D5007EE4B2 /* Card.swift */,
 				301F16A62A8A9BED00054A50 /* Assets.xcassets */,
 				301F16A82A8A9BED00054A50 /* Preview Content */,
