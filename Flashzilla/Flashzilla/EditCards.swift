@@ -71,6 +71,11 @@ struct EditCards: View {
         
         let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
         cards.insert(card, at: 0)
+        
+        // Challenge 1, clear textFields after adding a card
+        newPrompt = ""
+        newAnswer = ""
+        
         saveData()
     }
     
