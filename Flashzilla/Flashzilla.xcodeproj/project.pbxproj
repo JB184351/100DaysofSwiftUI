@@ -11,6 +11,7 @@
 		301F16A52A8A9BEC00054A50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301F16A42A8A9BEC00054A50 /* ContentView.swift */; };
 		301F16A72A8A9BED00054A50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 301F16A62A8A9BED00054A50 /* Assets.xcassets */; };
 		301F16AA2A8A9BED00054A50 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 301F16A92A8A9BED00054A50 /* Preview Assets.xcassets */; };
+		30688FB22A8D2CB0008AD283 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30688FB12A8D2CB0008AD283 /* EditCards.swift */; };
 		30C491DB2A8BD7D5007EE4B2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C491DA2A8BD7D5007EE4B2 /* Card.swift */; };
 		30C491DD2A8BD87C007EE4B2 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C491DC2A8BD87C007EE4B2 /* CardView.swift */; };
 /* End PBXBuildFile section */
@@ -21,6 +22,7 @@
 		301F16A42A8A9BEC00054A50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		301F16A62A8A9BED00054A50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		301F16A92A8A9BED00054A50 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		30688FB12A8D2CB0008AD283 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 		30C491DA2A8BD7D5007EE4B2 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		30C491DC2A8BD87C007EE4B2 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +61,7 @@
 				301F16A42A8A9BEC00054A50 /* ContentView.swift */,
 				30C491DC2A8BD87C007EE4B2 /* CardView.swift */,
 				30C491DA2A8BD7D5007EE4B2 /* Card.swift */,
+				30688FB12A8D2CB0008AD283 /* EditCards.swift */,
 				301F16A62A8A9BED00054A50 /* Assets.xcassets */,
 				301F16A82A8A9BED00054A50 /* Preview Content */,
 			);
@@ -146,6 +149,7 @@
 				301F16A52A8A9BEC00054A50 /* ContentView.swift in Sources */,
 				30C491DB2A8BD7D5007EE4B2 /* Card.swift in Sources */,
 				30C491DD2A8BD87C007EE4B2 /* CardView.swift in Sources */,
+				30688FB22A8D2CB0008AD283 /* EditCards.swift in Sources */,
 				301F16A32A8A9BEC00054A50 /* FlashzillaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
