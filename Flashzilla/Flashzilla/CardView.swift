@@ -30,7 +30,9 @@ struct CardView: View {
                     diffferentiateWithoutColor
                     ? nil
                     : RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(offset.width > 0 ? .green : . red)
+                        .fill(offset.width > 1 ? .green : . red)
+                    // Challenge 2, I changed the condition to be greater than
+                    // 1 so we don't turned red upon return to center
                 )
                 .shadow(radius: 10)
             
