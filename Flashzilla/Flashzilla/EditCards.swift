@@ -69,7 +69,7 @@ struct EditCards: View {
         
         guard trimmedPrompt.isEmpty == false && trimmedAnswer.isEmpty == false else { return }
         
-        let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
+        let card = Card(id: UUID(), prompt: trimmedPrompt, answer: trimmedAnswer)
         cards.insert(card, at: 0)
         
         // Challenge 1, clear textFields after adding a card
