@@ -45,7 +45,7 @@ struct ContentView: View {
 
 // Challenge 3, used chatGPt to help with this
 // though I don't think it worked well but was
-// interested to look at 
+// interested to look at
 struct OffsetPreferenceKey: PreferenceKey {
     static var defaultValue: CGPoint = .zero
     
