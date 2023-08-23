@@ -7,6 +7,25 @@
 
 import SwiftUI
 
+// Challenge 1: Add text for photo credit in Resort View
+// While this could've been a simple overlay, I found this
+// code online to make it look decent.
+struct ImageOverlay: View {
+    @State var textForOverlay = ""
+    
+    var body: some View {
+        ZStack {
+            Text(textForOverlay)
+                .font(.callout)
+                .padding(6)
+                .foregroundColor(.white)
+        }.background(Color.black)
+        .opacity(0.8)
+        .cornerRadius(10.0)
+        .padding(6)
+    }
+}
+
 struct ResortView: View {
     let resort: Resort
     
@@ -24,6 +43,7 @@ struct ResortView: View {
                 Image(decorative: resort.id)
                     .resizable()
                     .scaledToFit()
+                    .overlay(ImageOverlay(textForOverlay: "Credit: \(resort.imageCredit)"), alignment: .bottomLeading)
                 
                 HStack {
                     if sizeClass == .compact &&  typeSize > .large {
