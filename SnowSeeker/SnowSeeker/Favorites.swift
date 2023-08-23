@@ -9,11 +9,15 @@ import Foundation
 
 class Favorites: ObservableObject {
     private var resorts: Set<String>
-    private let saveKey = "Favorites"
+    let savePath = FileManager.documentsDirectory.appendingPathComponent("Favorites")
     
     init() {
-        
-        resorts = []
+        do {
+            let data = try Data(contentsOf: savePath)
+            resorts = try JSONDecoder().decode(Set<String>.self, from: data)
+        } catch {
+            resorts = []
+        }
     }
     
     func contains(_ resort: Resort) -> Bool {
@@ -35,5 +39,11 @@ class Favorites: ObservableObject {
 
      func save() {
          // write out our data
+         do {
+             let data = try JSONEncoder().encode(resorts)
+             try data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
+         } catch {
+             print("Unable to save data.")
+         }
      }
 }
