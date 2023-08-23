@@ -25,8 +25,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(filteredResorts
-            ) { resort in
+            List(filteredResorts) { resort in
                 NavigationLink {
                     ResortView(resort: resort)
                 } label: {
