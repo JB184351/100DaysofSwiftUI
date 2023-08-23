@@ -11,6 +11,7 @@ class Favorites: ObservableObject {
     private var resorts: Set<String>
     let savePath = FileManager.documentsDirectory.appendingPathComponent("Favorites")
     
+    // Challenge 2: Filled in loading and saving methods
     init() {
         do {
             let data = try Data(contentsOf: savePath)
