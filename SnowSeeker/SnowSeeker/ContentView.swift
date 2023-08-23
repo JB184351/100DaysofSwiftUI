@@ -17,11 +17,19 @@ extension View {
     }
 }
 
+// For Challenge 3: Adding the filter types based on
+// what the user could want.
+enum FilterTypes {
+    case defaultOrder, alphabetical, country
+}
+
 struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     
     @StateObject var favorites = Favorites()
     @State private var searchText = ""
+    @State private var filterType: FilterTypes = .defaultOrder
+    @State private var isShowingFilterDialog = false
     
     var body: some View {
         NavigationView {
@@ -58,6 +66,18 @@ struct ContentView: View {
             }
             .navigationTitle("Resorts")
             .searchable(text: $searchText, prompt: "Search for a resort")
+            .toolbar {
+                Button {
+                    isShowingFilterDialog = true
+                } label: {
+                    Label("Sort", systemImage: "folder")
+                }
+            }
+            .confirmationDialog("Sort Options", isPresented: $isShowingFilterDialog) {
+                Button("Default") { filterType = .defaultOrder }
+                Button("Alphabetical") { filterType = .alphabetical }
+                Button("Country") { filterType = .country }
+            }
             
             WelcomeView()
         }
@@ -67,7 +87,14 @@ struct ContentView: View {
     
     var filteredResorts: [Resort] {
         if searchText.isEmpty {
-            return resorts
+            switch filterType {
+            case .defaultOrder:
+                return resorts
+            case .alphabetical:
+                return resorts.sorted(by: { $0.name < $1.name })
+            case .country:
+                return resorts.sorted(by: { $0.country < $1.country })
+            }
         } else {
             return resorts.filter { $0.name.localizedStandardContains(searchText) }
         }
